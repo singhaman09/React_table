@@ -1,11 +1,11 @@
 import React from "react";
-import { SortConfig, TableColumn } from "../../types";
+import { SortConfig, TableColumn, User} from "../../types";
 import { ChevronUpIcon, ChevronDownIcon } from "../UI/Icons";
 
 interface TableHeaderProps {
   columns: TableColumn[];
   sortConfig: SortConfig;
-  onSort: (key: keyof TableColumn["key"]) => void;
+  onSort: (key: keyof User | "name") => void;
 }
 
 const TableHeader: React.FC<TableHeaderProps> = ({

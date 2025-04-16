@@ -9,7 +9,7 @@ export interface User {
 }
 
 export interface SortConfig {
-  key: keyof User | null;
+  key: keyof User | "name";
   direction: "ascending" | "descending";
 }
 
@@ -20,7 +20,7 @@ export interface PaginationConfig {
 }
 
 export interface TableColumn {
-  key: keyof User;
+  key: keyof User | "name";
   label: string;
   sortable: boolean;
 }

@@ -22,7 +22,7 @@ const DataTable: React.FC = () => {
   const debouncedFilterText = useDebounce<string>(filterText, 300);
 
   const [sortConfig, setSortConfig] = useState<SortConfig>({
-    key: null,
+    key: "name",
     direction: "ascending",
   });
 
@@ -33,7 +33,7 @@ const DataTable: React.FC = () => {
   });
 
   const columns: TableColumn[] = [
-    { key: "name" as keyof User, label: "Name", sortable: true },
+    { key: "name" as keyof User | "name", label: "Name", sortable: true },
     { key: "email", label: "Email", sortable: true },
     { key: "role", label: "Role", sortable: true },
     { key: "status", label: "Status", sortable: false },
@@ -68,7 +68,7 @@ const DataTable: React.FC = () => {
     fetchUsers();
   }, []);
 
-  const handleSort = (key: keyof User) => {
+  const handleSort = (key: keyof User | "name") => {
     setSortConfig((prevConfig) => {
       if (prevConfig.key === key) {
         return {
