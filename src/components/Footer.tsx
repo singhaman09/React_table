@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} DataTable App. All rights reserved.
+          &copy; {new Date().getFullYear()} DataTable App. All rights reserved.
         </div>
       </div>
     </footer>

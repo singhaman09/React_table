@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+# Data Table with Sorting, Filtering, and Pagination
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objective
+This project involves building a React.js application that displays a tabular list of items (such as users, products, or employees) with sorting, filtering, and pagination functionalities.
 
-Currently, two official plugins are available:
+## Features
+```
+1. Table Structure
+Columns: Name, Email, Role, Status
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Displays sample data from the provided API
 
-## Expanding the ESLint configuration
+2. Sorting
+Clickable column headers to sort data
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Supports ascending and descending order toggling
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Sorting available for: Name, Email, and Role
+
+3. Filtering
+Search input field above the table
+
+Filters data by Name or Email
+
+Dynamic filtering as the user types
+
+4. Pagination
+Supports 5 or 10 rows per page
+
+Displays current page number and total pages
+
+Includes Previous and Next buttons, which are disabled when at the start or end of pagination
+
+5. UI Behavior
+Shows a message when no results match the filter criteria
+
+Sorting and filtering functionalities work together seamlessly
+
+Displays a row count summary (e.g., "Showing 1–10 of 50 entries")
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Data Source
+You can fetch and display real sample data using the following API:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+https://dummyjson.com/users
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```

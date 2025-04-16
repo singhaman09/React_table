@@ -11,7 +11,6 @@ export const sortData = (data: User[], sortConfig: SortConfig): User[] => {
     let aValue: any;
     let bValue: any;
 
-    // Handle special case for name which is composed of firstName and lastName
     if (sortConfig.key === "name") {
       aValue = getFullName(a).toLowerCase();
       bValue = getFullName(b).toLowerCase();
@@ -19,7 +18,6 @@ export const sortData = (data: User[], sortConfig: SortConfig): User[] => {
       aValue = a[sortConfig.key];
       bValue = b[sortConfig.key];
 
-      // Handle string comparison case-insensitive
       if (typeof aValue === "string" && typeof bValue === "string") {
         aValue = aValue.toLowerCase();
         bValue = bValue.toLowerCase();

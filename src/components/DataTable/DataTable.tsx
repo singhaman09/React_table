@@ -43,18 +43,15 @@ const DataTable: React.FC = () => {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("https://dummyjson.com/users?limit=100");
+        const response = await fetch("https://dummyjson.com/users?limit=50");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
 
-        // Transform the data to match our User type with added role and status
         const transformedUsers: User[] = data.users.map((user: any) => ({
           ...user,
-          role: ["Admin", "User", "Editor", "Viewer"][
-            Math.floor(Math.random() * 4)
-          ],
+          role: ["QA", "React", "Node", "SDET"][Math.floor(Math.random() * 4)],
           status: ["active", "inactive", "pending"][
             Math.floor(Math.random() * 3)
           ] as "active" | "inactive" | "pending",
@@ -102,17 +99,14 @@ const DataTable: React.FC = () => {
     setPagination((prev) => ({ ...prev, currentPage: 1 }));
   };
 
-  // Filter users based on search input
   const filteredUsers = useMemo(() => {
     return filterData(users, debouncedFilterText);
   }, [users, debouncedFilterText]);
 
-  // Sort filtered users
   const sortedUsers = useMemo(() => {
     return sortData(filteredUsers, sortConfig);
   }, [filteredUsers, sortConfig]);
 
-  // Paginate sorted and filtered users
   const paginatedUsers = useMemo(() => {
     return paginateData(
       sortedUsers,
@@ -121,7 +115,6 @@ const DataTable: React.FC = () => {
     );
   }, [sortedUsers, pagination.currentPage, pagination.rowsPerPage]);
 
-  // Update total pages when filtered data changes
   useEffect(() => {
     setPagination((prev) => ({
       ...prev,
